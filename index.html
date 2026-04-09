@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lumen Ops — Custom AI Software for Small Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0e0d;
+    --bone: #f5f2ec;
+    --warm-mid: #e8e2d8;
+    --stone: #9c9488;
+    --gold: #b89a6a;
+    --gold-light: #d4b98a;
+    --white: #fdfcfa;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 60px;
+    background: transparent;
+    transition: background 0.4s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(253,252,250,0.94);
+    backdrop-filter: blur(12px);
+    padding: 18px 60px;
+    border-bottom: 1px solid var(--warm-mid);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.65;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 160px 60px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(184,154,106,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(184,154,106,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.2s forwards;
+  }
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    max-width: 820px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--stone);
+    max-width: 520px;
+    margin-top: 36px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+  .hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-top: 56px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--ink);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
+  .btn-ghost {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    border-bottom: 1px solid var(--warm-mid);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  .hero-line {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 220px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0.35;
+    animation: fadeIn 1.5s ease 1.2s forwards;
+    opacity: 0;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 120px 60px; }
+  .section-label {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.1;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 32px 0;
+    opacity: 0.6;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--bone); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 72px;
+  }
+  .service-card {
+    background: var(--white);
+    padding: 52px 44px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+  .service-card:hover { transform: translateY(-4px); }
+  .service-card:hover::after { width: 100%; }
+  .service-num {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--warm-mid);
+    line-height: 1;
+    margin-bottom: 28px;
+  }
+  .service-title {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+  .service-desc {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--stone);
+  }
+
+  /* ── HOW IT WORKS ── */
+  #process { background: var(--white); }
+  .process-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: start;
+    margin-top: 72px;
+  }
+  .process-left .section-title { max-width: 380px; }
+  .process-left p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--stone);
+    margin-top: 12px;
+    max-width: 380px;
+  }
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex;
+    gap: 32px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--warm-mid);
+    position: relative;
+  }
+  .step:first-child { padding-top: 0; }
+  .step-num {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    min-width: 28px;
+    padding-top: 4px;
+  }
+  .step-content h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .step-content p {
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--stone);
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--ink); color: var(--bone); }
+  #about .section-label { color: var(--gold-light); }
+  #about .section-title { color: var(--bone); }
+  #about .section-title em { color: var(--gold-light); }
+  #about .divider { background: var(--gold-light); }
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    margin-top: 72px;
+  }
+  .about-image-placeholder {
+    aspect-ratio: 4/5;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 40%, rgba(184,154,106,0.12), transparent 60%);
+  }
+  .about-image-placeholder span {
+    font-family: var(--serif);
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+  .about-text p {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(232,226,216,0.75);
+    margin-bottom: 24px;
+  }
+  .about-text p:last-of-type { margin-bottom: 0; }
+  .about-text strong {
+    color: var(--bone);
+    font-weight: 400;
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--gold);
+    padding: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .stat {
+    background: var(--gold);
+    text-align: center;
+    padding: 20px;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bone); }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: start;
+    margin-top: 72px;
+  }
+  .contact-info p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--stone);
+    margin-top: 12px;
+    max-width: 360px;
+  }
+  .contact-detail {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .contact-detail-label {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .contact-detail-value {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 24px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--white);
+    border: 1px solid var(--warm-mid);
+    padding: 16px 20px;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    border-radius: 0;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 48px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--bone);
+    letter-spacing: 0.08em;
+  }
+  .footer-logo span { color: var(--gold); }
+  footer p {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 0.35; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    nav { padding: 24px 32px; }
+    nav.scrolled { padding: 16px 32px; }
+    .nav-links { gap: 24px; }
+    section { padding: 80px 32px; }
+    .hero { padding: 140px 32px 80px; }
+    .services-grid { grid-template-columns: 1fr; gap: 2px; }
+    .process-layout,
+    .about-layout,
+    .contact-layout { grid-template-columns: 1fr; gap: 56px; }
+    .about-image-placeholder { display: none; }
+    .stats-strip { padding: 48px 32px; grid-template-columns: 1fr; gap: 32px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 40px 32px; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-line { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Lumen <span>Ops</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" id="nav-elite-link" style="opacity:1; color:var(--gold); letter-spacing:0.18em;">Elite ✦</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow">Custom AI Software for Small Business</div>
+  <h1 class="hero-headline">
+    Say goodbye<br />to <em>SaaS.</em>
+  </h1>
+  <p class="hero-sub">
+    Stop paying monthly fees for software that almost fits. We build custom AI-powered tools designed exactly for how your business operates — delivered once, owned forever. No subscriptions. No bloat. Just software that works.
+  </p>
+  <div class="hero-cta-row">
+    <a href="#contact" class="btn-primary">Start a Conversation</a>
+    <a href="#services" class="btn-ghost">See What We Build</a>
+  </div>
+  <div class="hero-line"></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label reveal">What We Build</div>
+  <h2 class="section-title reveal">Precision tools for<br /><em>real operations.</em></h2>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <h3 class="service-title">AI Workflow Automation</h3>
+      <p class="service-desc">We map your most time-consuming processes and replace them with intelligent automations — from lead follow-up to document generation to reporting. Built around how your team actually works.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <h3 class="service-title">Custom Internal Tools</h3>
+      <p class="service-desc">Off-the-shelf software never quite fits. We build internal dashboards, CRM extensions, client portals, and ops tools tailored to your exact workflow — no unnecessary features, no bloat.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <h3 class="service-title">AI-Powered Client Experiences</h3>
+      <p class="service-desc">From intelligent intake forms to automated follow-up sequences to AI chat assistants — we build the client-facing layer that makes your business feel larger than it is.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <h3 class="service-title">Data & Reporting Systems</h3>
+      <p class="service-desc">Stop running your business on gut instinct and disconnected spreadsheets. We build live dashboards and reporting infrastructure so you can see exactly what's working — and what isn't.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">05</div>
+      <h3 class="service-title">Integration Architecture</h3>
+      <p class="service-desc">Your tools should talk to each other. We connect your CRM, email, accounting, scheduling, and communication platforms into a single coherent system — and add AI where it multiplies output.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">06</div>
+      <h3 class="service-title">Ongoing Build Partnership</h3>
+      <p class="service-desc">Some clients want a project. Others want a long-term technical partner. We offer retained partnerships for businesses that want to keep compounding their software advantage month over month.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-layout">
+    <div class="process-left">
+      <div class="section-label reveal">How It Works</div>
+      <h2 class="section-title reveal">Simple process.<br /><em>Serious results.</em></h2>
+      <div class="divider reveal"></div>
+      <p class="reveal">We don't believe in long discovery phases and bloated proposals. We move quickly from understanding your operation to shipping software that works — then iterate from there.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Discovery Call</h3>
+          <p>We spend 45–60 minutes understanding your business, your biggest friction points, and where you're leaving time or money on the table. No pitch — just questions.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Solution Design</h3>
+          <p>We map exactly what to build and why. You receive a clear scope, timeline, and fixed investment — before we write a single line of code.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Build & Iterate</h3>
+          <p>We build in sprints with regular check-ins. You see real progress weekly — not a big reveal at the end. Feedback shapes every iteration.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Launch & Scale</h3>
+          <p>We handle deployment, team training, and the first 30 days of support. Once it's running, we help you identify the next layer to build.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat reveal">
+    <div class="stat-num">48h</div>
+    <div class="stat-label">Average time to first prototype</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Custom-built, nothing off-the-shelf</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">SMB</div>
+    <div class="stat-label">Exclusively focused on small business</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-layout">
+    <div class="about-image-placeholder reveal">
+      <span>Photo Placeholder</span>
+    </div>
+    <div class="about-text">
+      <div class="section-label reveal">About</div>
+      <h2 class="section-title reveal">Built by operators,<br /><em>for operators.</em></h2>
+      <div class="divider reveal"></div>
+      <p class="reveal">
+        <strong>[Founder Name]</strong> started Lumen Ops after spending years watching small businesses lose ground to larger competitors — not because they lacked talent or drive, but because they lacked access to the right tools. Enterprise software was built for enterprise budgets. Everything else was a compromise.
+      </p>
+      <p class="reveal">
+        The belief behind Lumen Ops is simple: <strong>small businesses deserve software that actually fits them.</strong> With AI lowering the cost of custom development dramatically, there's no reason your operation should be running on workarounds any longer.
+      </p>
+      <p class="reveal">
+        Every engagement is led directly by [Founder Name] — no handoffs to junior developers, no offshore work. You get a senior technical partner who understands both the code and the business behind it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="contact-info">
+      <div class="section-label reveal">Get in Touch</div>
+      <h2 class="section-title reveal">Let's talk about<br /><em>what you need.</em></h2>
+      <div class="divider reveal"></div>
+      <p class="reveal">Most engagements start with a single conversation. Tell us what's slowing you down — we'll tell you honestly whether software is the answer and what it would take to build it.</p>
+      <div class="contact-detail reveal">
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Email</span>
+          <span class="contact-detail-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2bab7bebebd92bfb7a0bbb6bbb3bcb0a7bbbeb6fcb1bd">[email&#160;protected]</a></span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Availability</span>
+          <span class="contact-detail-value">Currently accepting new clients</span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Response time</span>
+          <span class="contact-detail-value">Within one business day</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Business Name</label>
+        <input type="text" placeholder="Your Company LLC" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="jane@yourcompany.com" />
+      </div>
+      <div class="form-group">
+        <label>What are you looking to build?</label>
+        <select>
+          <option value="" disabled selected>Select a focus area</option>
+          <option>AI Workflow Automation</option>
+          <option>Custom Internal Tool</option>
+          <option>Client-Facing AI Feature</option>
+          <option>Data & Reporting System</option>
+          <option>Integration Architecture</option>
+          <option>Not sure yet — need guidance</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell us about your biggest operational bottleneck</label>
+        <textarea placeholder="Describe the friction point, manual process, or gap you're trying to solve..."></textarea>
+      </div>
+      <button type="button" class="btn-primary" style="border:none; cursor:pointer; width:100%; text-align:center;">
+        Send Message
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ELITE TEASER SECTION -->
+<section id="elite" style="background:var(--ink); padding:140px 60px; position:relative; overflow:hidden;">
+  <!-- Subtle grain texture overlay -->
+  <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%220.04%22/%3E%3C/svg%3E');opacity:0.4;pointer-events:none;"></div>
+  <!-- Gold radial glow -->
+  <div style="position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(ellipse, rgba(184,154,106,0.12) 0%, transparent 65%);pointer-events:none;"></div>
+
+  <div style="max-width:900px; position:relative;">
+    <div class="reveal" style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
+      <div style="width:32px;height:1px;background:var(--gold);opacity:0.6;"></div>
+      <span style="font-family:var(--sans);font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);">By Application Only</span>
+    </div>
+
+    <h2 class="reveal" style="font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,5.2rem);font-weight:300;line-height:1.05;color:var(--bone);margin-bottom:36px;">
+      Lumen Ops <em style="font-style:italic;color:var(--gold);">Elite.</em><br />
+      Your dedicated<br /><em style="font-style:italic;color:var(--gold);">AI agency.</em>
+    </h2>
+
+    <p class="reveal" style="font-family:var(--sans);font-size:1.05rem;font-weight:300;line-height:1.85;color:rgba(232,226,216,0.65);max-width:600px;margin-bottom:64px;">
+      For businesses that don't want to manage software — they just want results. Lumen Ops Elite is a fully managed AI agency partnership. We design, build, run, and continuously improve your AI systems in the background. You stay focused on your business. We handle everything else.
+    </p>
+
+    <!-- What's included -->
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:72px;">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:40px 32px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);margin-bottom:16px;">✦</div>
+        <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--bone);margin-bottom:12px;">Fully Managed AI Systems</h3>
+        <p style="font-family:var(--sans);font-size:0.85rem;font-weight:300;line-height:1.8;color:rgba(232,226,216,0.5);">We don't hand you software and walk away. We own the outcomes. Your AI agents are monitored, maintained, and continuously refined — with zero management required from your team.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:40px 32px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);margin-bottom:16px;">✦</div>
+        <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--bone);margin-bottom:12px;">Dedicated Build Capacity</h3>
+        <p style="font-family:var(--sans);font-size:0.85rem;font-weight:300;line-height:1.8;color:rgba(232,226,216,0.5);">Reserved engineering hours every month — exclusively yours. New automations, new agents, new integrations as your business evolves. No project scopes. No change orders. Just continuous progress.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:40px 32px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);margin-bottom:16px;">✦</div>
+        <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--bone);margin-bottom:12px;">Strategic AI Partnership</h3>
+        <p style="font-family:var(--sans);font-size:0.85rem;font-weight:300;line-height:1.8;color:rgba(232,226,216,0.5);">Monthly strategy sessions to identify the highest-leverage opportunities in your business. We think proactively about where AI can move the needle — and then we build it.</p>
+      </div>
+    </div>
+
+    <!-- Differentiator bar -->
+    <div class="reveal" style="border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:32px 0;margin-bottom:56px;display:flex;gap:48px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;"></div>
+        <span style="font-family:var(--sans);font-size:0.8rem;font-weight:300;color:rgba(232,226,216,0.55);letter-spacing:0.06em;">Fully managed — hands off for your team</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;"></div>
+        <span style="font-family:var(--sans);font-size:0.8rem;font-weight:300;color:rgba(232,226,216,0.55);letter-spacing:0.06em;">Dedicated capacity, no scope creep</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;"></div>
+        <span style="font-family:var(--sans);font-size:0.8rem;font-weight:300;color:rgba(232,226,216,0.55);letter-spacing:0.06em;">Includes Mac Mini deployment</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;"></div>
+        <span style="font-family:var(--sans);font-size:0.8rem;font-weight:300;color:rgba(232,226,216,0.55);letter-spacing:0.06em;">Application only — 3 clients per quarter</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="reveal" style="display:flex;align-items:center;gap:40px;">
+      <button id="elite-apply-btn" style="display:inline-block;padding:18px 52px;background:var(--gold);color:var(--white);font-family:var(--sans);font-size:0.78rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.25s,transform 0.2s;">
+        Apply for Access
+      </button>
+      <span style="font-family:var(--sans);font-size:0.78rem;font-weight:300;color:rgba(255,255,255,0.25);letter-spacing:0.1em;">Accepting 3 clients per quarter</span>
+    </div>
+  </div>
+</section>
+
+<!-- ELITE APPLICATION MODAL -->
+<div id="elite-modal" style="display:none;position:fixed;inset:0;z-index:999;align-items:center;justify-content:center;">
+  <!-- Backdrop -->
+  <div id="elite-backdrop" style="position:absolute;inset:0;background:rgba(8,8,7,0.92);backdrop-filter:blur(16px);"></div>
+
+  <!-- Modal Panel -->
+  <div style="position:relative;z-index:2;background:#111110;border:1px solid rgba(184,154,106,0.2);max-width:680px;width:calc(100% - 48px);max-height:90vh;overflow-y:auto;padding:64px 56px;">
+
+    <!-- Close -->
+    <button id="elite-close" style="position:absolute;top:24px;right:28px;background:none;border:none;color:rgba(255,255,255,0.3);font-size:1.4rem;cursor:pointer;line-height:1;transition:color 0.2s;">✕</button>
+
+    <!-- Header -->
+    <div style="margin-bottom:48px;">
+      <div style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Lumen Ops Elite — Application</div>
+      <h2 style="font-family:var(--serif);font-size:2.6rem;font-weight:300;color:var(--bone);line-height:1.1;margin-bottom:16px;">Tell us about<br /><em style="font-style:italic;color:var(--gold);">your operation.</em></h2>
+      <p style="font-family:var(--sans);font-size:0.88rem;font-weight:300;line-height:1.8;color:rgba(232,226,216,0.45);">We review every application personally. If it's a fit, you'll hear from us within 48 hours to schedule a private briefing.</p>
+    </div>
+
+    <!-- Form -->
+    <div style="display:flex;flex-direction:column;gap:20px;">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">First Name</label>
+          <input type="text" placeholder="Jane" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Last Name</label>
+          <input type="text" placeholder="Smith" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Business Name</label>
+        <input type="text" placeholder="Your Company" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Email</label>
+        <input type="email" placeholder="jane@yourcompany.com" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Annual Revenue Range</label>
+        <select style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:rgba(232,226,216,0.6);outline:none;border-radius:0;appearance:none;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          <option value="" disabled selected style="background:#0d1220;">Select a range</option>
+          <option style="background:#0d1220;">$250k – $500k</option>
+          <option style="background:#0d1220;">$500k – $1M</option>
+          <option style="background:#0d1220;">$1M – $3M</option>
+          <option style="background:#0d1220;">$3M+</option>
+          <option style="background:#0d1220;">Prefer not to say</option>
+        </select>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">What does your business do?</label>
+        <textarea placeholder="Brief description of your business, your team size, and how you currently operate..." rows="3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;resize:vertical;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">What would you want the agents to handle?</label>
+        <textarea placeholder="What processes, decisions, or workflows are you looking to automate or augment with AI?" rows="4" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;resize:vertical;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Why now?</label>
+        <textarea placeholder="What's driving this decision at this moment in your business?" rows="3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;resize:vertical;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div style="margin-top:8px;">
+        <button id="elite-submit" style="width:100%;padding:18px;background:var(--gold);color:var(--white);font-family:var(--sans);font-size:0.78rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.25s;">
+          Submit Application
+        </button>
+        <p style="font-family:var(--sans);font-size:0.72rem;font-weight:300;color:rgba(255,255,255,0.2);text-align:center;margin-top:16px;letter-spacing:0.06em;">We review every application personally. 3 spots available this quarter.</p>
+      </div>
+
+      <!-- Success state (hidden) -->
+      <div id="elite-success" style="display:none;text-align:center;padding:40px 20px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);margin-bottom:16px;">✦</div>
+        <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--bone);margin-bottom:12px;">Application received.</h3>
+        <p style="font-family:var(--sans);font-size:0.88rem;font-weight:300;color:rgba(232,226,216,0.5);line-height:1.8;">We'll review your application and be in touch within 48 hours if it's a strong fit. Thank you for your interest in Lumen <em style="font-style:italic;color:var(--accent)">Ops</em> Elite.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Lumen <span>Ops</span></div>
+  <p style="color:rgba(255,255,255,0.2);font-size:0.72rem;letter-spacing:0.08em;">Lumen Ops Elite — <span style="color:var(--gold);cursor:pointer;" id="footer-elite-link">Apply for Access ✦</span></p>
+  <p>© 2026 Lumen Ops. All rights reserved.</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Elite modal
+  const modal = document.getElementById('elite-modal');
+  const openModal = () => {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { modal.style.opacity = '1'; }, 10);
+  };
+  const closeModal = () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+  document.getElementById('elite-apply-btn').addEventListener('click', openModal);
+  document.getElementById('nav-elite-link').addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+  document.getElementById('elite-close').addEventListener('click', closeModal);
+  document.getElementById('footer-elite-link').addEventListener('click', openModal);
+  document.getElementById('elite-submit').addEventListener('click', () => {
+    document.getElementById('elite-submit').closest('div').previousElementSibling.style.display = 'none';
+    document.querySelectorAll('#elite-modal input, #elite-modal textarea, #elite-modal select, #elite-modal button:not(#elite-close), #elite-modal label').forEach(el => el.style.display = 'none');
+    document.getElementById('elite-success').style.display = 'block';
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Sticky nav
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) 
