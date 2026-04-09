@@ -479,6 +479,97 @@
     letter-spacing: 0.1em;
   }
 
+  /* ── PORTFOLIO ── */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .portfolio-card {
+    background: var(--white);
+    border: 1px solid var(--warm-mid);
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .portfolio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  }
+  .portfolio-card-image {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio-card-image .portfolio-icon {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+  }
+  .portfolio-card-body {
+    padding: 28px 32px 32px;
+  }
+  .portfolio-card-tag {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .portfolio-card-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .portfolio-card-desc {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.75;
+  }
+  .portfolio-card-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .portfolio-card-tech span {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: var(--stone);
+    background: var(--bone);
+    padding: 4px 10px;
+    letter-spacing: 0.04em;
+  }
+  .portfolio-featured {
+    grid-column: span 2;
+  }
+  .portfolio-featured .portfolio-card-image {
+    height: 260px;
+  }
+  @media (max-width: 960px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-featured { grid-column: span 1; }
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -526,6 +617,7 @@
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#" id="nav-elite-link" style="opacity:1; color:var(--gold); letter-spacing:0.18em;">Elite ✦</a></li>
@@ -651,6 +743,114 @@
     <div class="stat-label">Exclusively focused on small business</div>
   </div>
 </div>
+
+<!-- PORTFOLIO -->
+<section id="work" style="background:var(--bone);padding:140px 60px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label reveal">Portfolio</div>
+    <h2 class="section-title reveal">Systems we've built<br /><em>that run every day.</em></h2>
+    <div class="divider reveal" style="margin-bottom:64px;"></div>
+
+    <div class="portfolio-grid">
+
+      <!-- OfferIQ — Featured -->
+      <div class="portfolio-card portfolio-featured reveal">
+        <div class="portfolio-card-image" style="background:linear-gradient(135deg,#1a1d23,#2d3142);flex-direction:column;">
+          <div class="portfolio-icon">&#9670;</div>
+          OfferIQ
+        </div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-tag">AI Underwriting Platform</div>
+          <div class="portfolio-card-title">3-engine deal analysis for real estate investors</div>
+          <div class="portfolio-card-desc">AI-powered underwriting platform that pulls live MLS comps, runs AVM blending across three valuation engines, generates smart offers, and builds negotiation plans — replacing hours of manual deal analysis with a 30-second workflow.</div>
+          <div class="portfolio-card-tech">
+            <span>React</span>
+            <span>Node.js</span>
+            <span>BrightMLS API</span>
+            <span>AI/LLM</span>
+            <span>Vercel</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCDI -->
+      <div class="portfolio-card reveal">
+        <div class="portfolio-card-image" style="background:linear-gradient(135deg,#0f172a,#1e3a5f);flex-direction:column;">
+          <div class="portfolio-icon">&#9632;</div>
+          BCDI
+        </div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-tag">Distressed Property Intelligence</div>
+          <div class="portfolio-card-title">1,000+ scored leads from court records & public data</div>
+          <div class="portfolio-card-desc">Automated pipeline that scrapes court records, cross-references property data, scores distress signals, and feeds qualified leads into CRM — turning raw public data into acquisition opportunities.</div>
+          <div class="portfolio-card-tech">
+            <span>React</span>
+            <span>Python</span>
+            <span>Web Scraping</span>
+            <span>GHL Integration</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call Dashboard -->
+      <div class="portfolio-card reveal">
+        <div class="portfolio-card-image" style="background:linear-gradient(135deg,#1c1917,#44403c);flex-direction:column;">
+          <div class="portfolio-icon">&#9742;</div>
+          Call Dashboard
+        </div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-tag">Call Tracking & Lead Management</div>
+          <div class="portfolio-card-title">Real-time inbound call intelligence</div>
+          <div class="portfolio-card-desc">Live dashboard tracking every inbound call — caller ID, call duration, lead status, and conversion metrics — giving the team instant visibility into marketing ROI and rep performance.</div>
+          <div class="portfolio-card-tech">
+            <span>Next.js</span>
+            <span>CallRail API</span>
+            <span>Real-time Data</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Command Center -->
+      <div class="portfolio-card reveal">
+        <div class="portfolio-card-image" style="background:linear-gradient(135deg,#3b0764,#581c87);flex-direction:column;">
+          <div class="portfolio-icon">&#9881;</div>
+          Ops Command
+        </div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-tag">Operations Command Center</div>
+          <div class="portfolio-card-title">One screen to run the entire operation</div>
+          <div class="portfolio-card-desc">Centralized operations hub integrating CRM data, deal pipeline, team activity, and automated workflows — replacing scattered spreadsheets with a single source of truth.</div>
+          <div class="portfolio-card-tech">
+            <span>Node.js</span>
+            <span>GHL API</span>
+            <span>Google APIs</span>
+            <span>Password-Protected</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comps API -->
+      <div class="portfolio-card reveal">
+        <div class="portfolio-card-image" style="background:linear-gradient(135deg,#064e3b,#065f46);flex-direction:column;">
+          <div class="portfolio-icon">&#8644;</div>
+          Comps Engine
+        </div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-tag">API & Integration Architecture</div>
+          <div class="portfolio-card-title">Live MLS comparable sales engine</div>
+          <div class="portfolio-card-desc">Backend API that queries BrightMLS in real-time, filters comps by radius, property type, and sale date, then feeds structured data into underwriting tools — the invisible infrastructure that powers deal decisions.</div>
+          <div class="portfolio-card-tech">
+            <span>Express.js</span>
+            <span>BrightMLS RESO</span>
+            <span>Fly.io</span>
+            <span>REST API</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section id="about">
