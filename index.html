@@ -698,28 +698,28 @@
         </div>
       </div>
     </div>
-    <div class="contact-form reveal">
+    <div class="contact-form reveal" id="contact-form">
       <div class="form-row">
         <div class="form-group">
           <label>First Name</label>
-          <input type="text" placeholder="Jane" />
+          <input type="text" placeholder="Jane" name="firstName" required />
         </div>
         <div class="form-group">
           <label>Last Name</label>
-          <input type="text" placeholder="Smith" />
+          <input type="text" placeholder="Smith" name="lastName" required />
         </div>
       </div>
       <div class="form-group">
         <label>Business Name</label>
-        <input type="text" placeholder="Your Company LLC" />
+        <input type="text" placeholder="Your Company LLC" name="business" />
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="email" placeholder="jane@yourcompany.com" />
+        <input type="email" placeholder="jane@yourcompany.com" name="email" required />
       </div>
       <div class="form-group">
         <label>What are you looking to build?</label>
-        <select>
+        <select name="focusArea">
           <option value="" disabled selected>Select a focus area</option>
           <option>AI Workflow Automation</option>
           <option>Custom Internal Tool</option>
@@ -731,11 +731,16 @@
       </div>
       <div class="form-group">
         <label>Tell us about your biggest operational bottleneck</label>
-        <textarea placeholder="Describe the friction point, manual process, or gap you're trying to solve..."></textarea>
+        <textarea placeholder="Describe the friction point, manual process, or gap you're trying to solve..." name="bottleneck"></textarea>
       </div>
-      <button type="button" class="btn-primary" style="border:none; cursor:pointer; width:100%; text-align:center;">
+      <button type="button" id="contact-submit" class="btn-primary" style="border:none; cursor:pointer; width:100%; text-align:center;">
         Send Message
       </button>
+      <div id="contact-success" style="display:none;text-align:center;padding:40px 20px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);margin-bottom:16px;">&#10038;</div>
+        <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:300;margin-bottom:12px;">Message sent.</h3>
+        <p style="font-size:0.88rem;font-weight:300;color:var(--stone);line-height:1.8;">We'll be in touch within one business day.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -830,32 +835,32 @@
     </div>
 
     <!-- Form -->
-    <div style="display:flex;flex-direction:column;gap:20px;">
+    <div id="elite-form" style="display:flex;flex-direction:column;gap:20px;">
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
         <div style="display:flex;flex-direction:column;gap:8px;">
           <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">First Name</label>
-          <input type="text" placeholder="Jane" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+          <input type="text" placeholder="Jane" name="firstName" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Last Name</label>
-          <input type="text" placeholder="Smith" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+          <input type="text" placeholder="Smith" name="lastName" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
         </div>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:8px;">
         <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Business Name</label>
-        <input type="text" placeholder="Your Company" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+        <input type="text" placeholder="Your Company" name="business" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
       </div>
 
       <div style="display:flex;flex-direction:column;gap:8px;">
         <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Email</label>
-        <input type="email" placeholder="jane@yourcompany.com" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+        <input type="email" placeholder="jane@yourcompany.com" name="email" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
       </div>
 
       <div style="display:flex;flex-direction:column;gap:8px;">
         <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Annual Revenue Range</label>
-        <select style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:rgba(232,226,216,0.6);outline:none;border-radius:0;appearance:none;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        <select name="revenue" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:rgba(232,226,216,0.6);outline:none;border-radius:0;appearance:none;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
           <option value="" disabled selected style="background:#0d1220;">Select a range</option>
           <option style="background:#0d1220;">$250k – $500k</option>
           <option style="background:#0d1220;">$500k – $1M</option>
@@ -867,17 +872,17 @@
 
       <div style="display:flex;flex-direction:column;gap:8px;">
         <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">What does your business do?</label>
-        <textarea placeholder="Brief description of your business, your team size, and how you currently operate..." rows="3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;resize:vertical;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        <textarea placeholder="Brief description of your business, your team size, and how you currently operate..." name="businessDescription" rows="3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;resize:vertical;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:8px;">
         <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">What would you want the agents to handle?</label>
-        <textarea placeholder="What processes, decisions, or workflows are you looking to automate or augment with AI?" rows="4" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;resize:vertical;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        <textarea placeholder="What processes, decisions, or workflows are you looking to automate or augment with AI?" name="agentNeeds" rows="4" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;resize:vertical;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:8px;">
         <label style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Why now?</label>
-        <textarea placeholder="What's driving this decision at this moment in your business?" rows="3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;resize:vertical;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        <textarea placeholder="What's driving this decision at this moment in your business?" name="whyNow" rows="3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;font-family:var(--sans);font-size:0.88rem;font-weight:300;color:var(--bone);outline:none;border-radius:0;resize:vertical;" onfocus="this.style.borderColor='rgba(184,154,106,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
       </div>
 
       <!-- Submit -->
@@ -903,11 +908,75 @@
 <footer>
   <div class="footer-logo">Lumen <span>Ops</span></div>
   <p style="color:rgba(255,255,255,0.2);font-size:0.72rem;letter-spacing:0.08em;">Lumen Ops Elite — <span style="color:var(--gold);cursor:pointer;" id="footer-elite-link">Apply for Access ✦</span></p>
-  <p>© 2026 Lumen Ops. All rights reserved.</p>
+  <p>© 2026 Lumen Ops. All rights reserved. &nbsp;|&nbsp; <a href="/privacy" style="color:rgba(255,255,255,0.3);text-decoration:none;font-size:0.72rem;">Privacy Policy</a></p>
 </footer>
 
+<!-- Google Analytics — replace G-XXXXXXXXXX with your GA4 Measurement ID -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
-  // Elite modal
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+-->
+
+<!-- Meta Pixel — replace PIXEL_ID with your Facebook Pixel ID -->
+<!--
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'PIXEL_ID');
+  fbq('track', 'PageView');
+</script>
+-->
+
+<script>
+  // ── Form submission helper ──
+  function collectFormData(container, formType) {
+    const data = { formType };
+    container.querySelectorAll('input, textarea, select').forEach(el => {
+      if (el.name && el.value) data[el.name] = el.value;
+    });
+    return data;
+  }
+
+  async function submitForm(data, btn, successEl, formContainer) {
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('Submit failed');
+      // Hide form fields, show success
+      formContainer.querySelectorAll('input, textarea, select, label, button, .form-row, .form-group').forEach(el => el.style.display = 'none');
+      successEl.style.display = 'block';
+      // Fire conversion events if pixels are loaded
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: data.formType });
+      if (typeof fbq === 'function') fbq('track', 'Lead');
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Try Again';
+      console.error(err);
+    }
+  }
+
+  // ── Contact form ──
+  document.getElementById('contact-submit').addEventListener('click', () => {
+    const form = document.getElementById('contact-form');
+    const data = collectFormData(form, 'contact');
+    if (!data.firstName || !data.lastName || !data.email) return;
+    submitForm(data, document.getElementById('contact-submit'), document.getElementById('contact-success'), form);
+  });
+
+  // ── Elite modal ──
   const modal = document.getElementById('elite-modal');
   const openModal = () => {
     modal.style.display = 'flex';
@@ -922,20 +991,23 @@
   document.getElementById('nav-elite-link').addEventListener('click', (e) => { e.preventDefault(); openModal(); });
   document.getElementById('elite-close').addEventListener('click', closeModal);
   document.getElementById('footer-elite-link').addEventListener('click', openModal);
-  document.getElementById('elite-submit').addEventListener('click', () => {
-    document.getElementById('elite-submit').closest('div').previousElementSibling.style.display = 'none';
-    document.querySelectorAll('#elite-modal input, #elite-modal textarea, #elite-modal select, #elite-modal button:not(#elite-close), #elite-modal label').forEach(el => el.style.display = 'none');
-    document.getElementById('elite-success').style.display = 'block';
-  });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-  // Sticky nav
+  // ── Elite form submit ──
+  document.getElementById('elite-submit').addEventListener('click', () => {
+    const form = document.getElementById('elite-form');
+    const data = collectFormData(form, 'elite');
+    if (!data.firstName || !data.lastName || !data.email) return;
+    submitForm(data, document.getElementById('elite-submit'), document.getElementById('elite-success'), form);
+  });
+
+  // ── Sticky nav ──
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  // Scroll reveal
+  // ── Scroll reveal ──
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
