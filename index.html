@@ -80,12 +80,21 @@
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
     padding: 160px 60px 100px;
     position: relative;
     overflow: hidden;
+  }
+  .hero-left {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-right {
+    position: relative;
+    z-index: 1;
   }
   .hero-bg {
     position: absolute;
@@ -693,7 +702,7 @@
       opacity: 0.8;
     }
     section { padding: 80px 32px; }
-    .hero { padding: 140px 32px 80px; }
+    .hero { padding: 140px 32px 80px; grid-template-columns: 1fr; gap: 40px; }
     .services-grid { grid-template-columns: 1fr; gap: 2px; }
     .process-layout,
     .about-layout,
@@ -735,6 +744,8 @@
     .hero {
       padding: 120px 20px 60px;
       min-height: auto;
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
     .hero-headline {
       font-size: clamp(2.4rem, 10vw, 3.8rem);
@@ -862,26 +873,31 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
-  <div class="hero-eyebrow">Custom AI Software for Small Business</div>
-  <h1 class="hero-headline">
-    Say goodbye<br />to <em>SaaS.</em>
-  </h1>
-  <p class="hero-sub">
-    Stop paying monthly fees for software that almost fits. We build custom AI-powered tools designed exactly for how your business operates — delivered once, owned forever.
-  </p>
-  <div class="hero-optin" id="hero-optin">
-    <div class="hero-optin-fields">
-      <input type="text" name="firstName" placeholder="First name" class="hero-input" required />
-      <input type="email" name="email" placeholder="Email address" class="hero-input" required />
+  <div class="hero-left">
+    <div class="hero-eyebrow">Custom AI Software for Small Business</div>
+    <h1 class="hero-headline">
+      Say goodbye<br />to <em>SaaS.</em>
+    </h1>
+    <p class="hero-sub">
+      Stop paying monthly fees for software that almost fits. We build custom AI-powered tools designed exactly for how your business operates — delivered once, owned forever.
+    </p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-optin" id="hero-optin" style="opacity:1;animation:fadeUp 1s ease 0.6s both;">
+      <div style="font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--ink);margin-bottom:8px;line-height:1.3;">Get your free <em style="color:var(--gold);">AI audit.</em></div>
+      <p style="font-family:var(--sans);font-size:0.82rem;font-weight:300;color:var(--stone);margin-bottom:24px;line-height:1.7;">We'll review your operations and show you exactly where AI saves you time and money.</p>
+      <div class="hero-optin-fields" style="grid-template-columns:1fr;">
+        <input type="text" name="firstName" placeholder="First name" class="hero-input" required />
+        <input type="email" name="email" placeholder="Email address" class="hero-input" required />
+      </div>
+      <button type="button" id="hero-optin-btn" class="btn-primary" style="margin-top:0;width:100%;text-align:center;">Get Your Free AI Audit</button>
+      <p class="hero-optin-note">No commitment. No sales pitch. Just a clear breakdown of opportunities.</p>
     </div>
-    <button type="button" id="hero-optin-btn" class="btn-primary" style="margin-top:0;width:100%;text-align:center;">Get Your Free AI Audit</button>
-    <p class="hero-optin-note">We'll review your operations and show you exactly where AI saves you time.</p>
+    <div class="hero-optin-success" id="hero-optin-success" style="display:none;">
+      <div style="font-family:var(--serif);font-size:1.6rem;color:var(--gold);margin-bottom:8px;">&#10038;</div>
+      <p style="font-family:var(--sans);font-size:1rem;font-weight:300;color:var(--stone);line-height:1.7;">You're in. We'll be in touch within one business day.</p>
+    </div>
   </div>
-  <div class="hero-optin-success" id="hero-optin-success" style="display:none;">
-    <div style="font-family:var(--serif);font-size:1.6rem;color:var(--gold);margin-bottom:8px;">&#10038;</div>
-    <p style="font-family:var(--sans);font-size:1rem;font-weight:300;color:var(--stone);line-height:1.7;">You're in. We'll be in touch within one business day.</p>
-  </div>
-  <div class="hero-line"></div>
 </section>
 
 <!-- SERVICES -->
