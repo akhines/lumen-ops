@@ -131,6 +131,56 @@
     opacity: 0;
     animation: fadeUp 1s ease 0.6s forwards;
   }
+  .hero-optin {
+    margin-top: 48px;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+  }
+  .hero-optin-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .hero-input {
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--warm-mid);
+    padding: 15px 18px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .hero-input:focus {
+    border-color: var(--gold);
+  }
+  .hero-input::placeholder {
+    color: var(--stone);
+    opacity: 0.6;
+  }
+  .hero-optin .btn-primary {
+    width: 100%;
+    text-align: center;
+    padding: 17px 40px;
+  }
+  .hero-optin-note {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: var(--stone);
+    margin-top: 14px;
+    opacity: 0.6;
+    letter-spacing: 0.02em;
+  }
+  .hero-optin-success {
+    margin-top: 48px;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
   .hero-cta-row {
     display: flex;
     align-items: center;
@@ -696,6 +746,13 @@
     .hero-eyebrow {
       margin-bottom: 24px;
     }
+    .hero-optin-fields {
+      grid-template-columns: 1fr;
+    }
+    .hero-optin {
+      max-width: 100%;
+      margin-top: 36px;
+    }
     .hero-cta-row {
       flex-direction: column;
       align-items: flex-start;
@@ -810,11 +867,19 @@
     Say goodbye<br />to <em>SaaS.</em>
   </h1>
   <p class="hero-sub">
-    Stop paying monthly fees for software that almost fits. We build custom AI-powered tools designed exactly for how your business operates — delivered once, owned forever. No subscriptions. No bloat. Just software that works.
+    Stop paying monthly fees for software that almost fits. We build custom AI-powered tools designed exactly for how your business operates — delivered once, owned forever.
   </p>
-  <div class="hero-cta-row">
-    <a href="#contact" class="btn-primary">Start a Conversation</a>
-    <a href="#services" class="btn-ghost">See What We Build</a>
+  <div class="hero-optin" id="hero-optin">
+    <div class="hero-optin-fields">
+      <input type="text" name="firstName" placeholder="First name" class="hero-input" required />
+      <input type="email" name="email" placeholder="Email address" class="hero-input" required />
+    </div>
+    <button type="button" id="hero-optin-btn" class="btn-primary" style="margin-top:0;width:100%;text-align:center;">Get Your Free AI Audit</button>
+    <p class="hero-optin-note">We'll review your operations and show you exactly where AI saves you time.</p>
+  </div>
+  <div class="hero-optin-success" id="hero-optin-success" style="display:none;">
+    <div style="font-family:var(--serif);font-size:1.6rem;color:var(--gold);margin-bottom:8px;">&#10038;</div>
+    <p style="font-family:var(--sans);font-size:1rem;font-weight:300;color:var(--stone);line-height:1.7;">You're in. We'll be in touch within one business day.</p>
   </div>
   <div class="hero-line"></div>
 </section>
@@ -1381,6 +1446,31 @@
       console.error(err);
     }
   }
+
+  // ── Hero optin ──
+  document.getElementById('hero-optin-btn').addEventListener('click', () => {
+    const optin = document.getElementById('hero-optin');
+    const firstName = optin.querySelector('input[name="firstName"]').value.trim();
+    const email = optin.querySelector('input[name="email"]').value.trim();
+    if (!firstName || !email) return;
+    const btn = document.getElementById('hero-optin-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ formType: 'hero-optin', firstName, email }),
+    }).then(res => {
+      if (!res.ok) throw new Error();
+      optin.style.display = 'none';
+      document.getElementById('hero-optin-success').style.display = 'block';
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'hero-optin' });
+      if (typeof fbq === 'function') fbq('track', 'Lead');
+    }).catch(() => {
+      btn.disabled = false;
+      btn.textContent = 'Try Again';
+    });
+  });
 
   // ── Contact form ──
   document.getElementById('contact-submit').addEventListener('click', () => {
