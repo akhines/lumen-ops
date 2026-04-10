@@ -371,9 +371,9 @@
   #about .divider { background: var(--gold-light); }
   .about-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: center;
+    grid-template-columns: auto 1fr;
+    gap: 64px;
+    align-items: start;
     margin-top: 72px;
   }
   .about-image-placeholder {
@@ -1185,8 +1185,10 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-layout">
-    <div class="reveal" style="overflow:hidden;">
-      <img src="/ashley.png" alt="Ashley Hines — Founder, Lumen Ops" style="width:280px;height:340px;object-fit:cover;object-position:center top;display:block;" />
+    <div class="reveal" style="display:flex;align-items:center;justify-content:center;">
+      <div style="width:300px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+        <img src="/ashley.png" alt="Ashley Hines — Founder, Lumen Ops" style="width:100%;height:auto;object-fit:cover;object-position:center top;display:block;" />
+      </div>
     </div>
     <div class="about-text">
       <div class="section-label reveal">About</div>
