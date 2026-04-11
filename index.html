@@ -103,8 +103,10 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(184,154,106,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(184,154,106,0.05) 0%, transparent 60%);
+      linear-gradient(to right, var(--white) 45%, rgba(245,242,236,0.85) 100%),
+      url('/screenshots/bcdi.png');
+    background-size: cover;
+    background-position: center right;
     pointer-events: none;
   }
   .hero-eyebrow {
@@ -1181,7 +1183,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" style="background:var(--bone);">
+<section id="contact" style="background:var(--bone);padding:40px 60px;">
   <div class="contact-layout">
     <div class="contact-info">
       <div class="section-label reveal">Get in Touch</div>
