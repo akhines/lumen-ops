@@ -22,7 +22,7 @@
     --sans: 'DM Sans', sans-serif;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; font-size: 17px; }
 
   body {
     background: var(--white);
@@ -41,14 +41,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 28px 60px;
+    padding: 28px 80px;
     background: transparent;
     transition: background 0.4s, padding 0.4s;
   }
   nav.scrolled {
     background: rgba(253,252,250,0.94);
     backdrop-filter: blur(12px);
-    padding: 18px 60px;
+    padding: 18px 80px;
     border-bottom: 1px solid var(--warm-mid);
   }
   .nav-logo {
@@ -67,7 +67,7 @@
   }
   .nav-links a {
     font-family: var(--sans);
-    font-size: 0.85rem;
+    font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -156,11 +156,11 @@
   }
   .hero-sub {
     font-family: var(--sans);
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 300;
     line-height: 1.7;
     color: var(--stone);
-    max-width: 520px;
+    max-width: 480px;
     margin-top: 28px;
     opacity: 0;
     animation: fadeUp 1s ease 0.6s forwards;
@@ -222,11 +222,11 @@
   }
   .btn-primary {
     display: inline-block;
-    padding: 16px 40px;
+    padding: 15px 40px;
     background: var(--ink);
     color: var(--white);
     font-family: var(--sans);
-    font-size: 0.85rem;
+    font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -236,7 +236,7 @@
   .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
   .btn-ghost {
     font-family: var(--sans);
-    font-size: 0.85rem;
+    font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -265,7 +265,7 @@
   section { padding: 56px 60px; }
   .section-label {
     font-family: var(--sans);
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -274,7 +274,7 @@
   }
   .section-title {
     font-family: var(--serif);
-    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-size: clamp(28px, 3.5vw, 42px);
     font-weight: 300;
     line-height: 1.1;
   }
@@ -293,11 +293,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
-    margin-top: 24px;
+    margin-top: 32px;
   }
   .service-card {
     background: var(--white);
-    padding: 52px 44px;
+    padding: 36px 32px;
     position: relative;
     overflow: hidden;
     transition: transform 0.3s;
@@ -314,24 +314,24 @@
   .service-card:hover::after { width: 100%; }
   .service-num {
     font-family: var(--serif);
-    font-size: 3.5rem;
+    font-size: 13px;
     font-weight: 300;
-    color: var(--warm-mid);
+    color: var(--gold);
     line-height: 1;
     margin-bottom: 28px;
   }
   .service-title {
     font-family: var(--serif);
-    font-size: 1.55rem;
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 16px;
     line-height: 1.25;
   }
   .service-desc {
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
-    line-height: 1.8;
+    line-height: 1.7;
     color: var(--stone);
   }
 
@@ -340,13 +340,13 @@
   .process-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 56px;
+    gap: 60px;
     align-items: start;
     margin-top: 24px;
   }
   .process-left .section-title { max-width: 380px; }
   .process-left p {
-    font-size: 0.95rem;
+    font-size: 16px;
     font-weight: 300;
     line-height: 1.85;
     color: var(--stone);
@@ -357,14 +357,14 @@
   .step {
     display: flex;
     gap: 24px;
-    padding: 24px 0;
+    padding: 28px 0;
     border-bottom: 1px solid var(--warm-mid);
     position: relative;
   }
   .step:first-child { padding-top: 0; }
   .step-num {
     font-family: var(--serif);
-    font-size: 0.85rem;
+    font-size: 13px;
     font-weight: 400;
     color: var(--gold);
     letter-spacing: 0.1em;
@@ -373,13 +373,13 @@
   }
   .step-content h3 {
     font-family: var(--serif);
-    font-size: 1.35rem;
+    font-size: 22px;
     font-weight: 400;
     margin-bottom: 10px;
   }
   .step-content p {
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
     line-height: 1.8;
     color: var(--stone);
@@ -394,7 +394,7 @@
   .about-layout {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 40px;
+    gap: 48px;
     align-items: start;
     margin-top: 24px;
   }
@@ -423,9 +423,9 @@
   }
   .about-text p {
     font-family: var(--sans);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 300;
-    line-height: 1.9;
+    line-height: 1.85;
     color: rgba(232,226,216,0.75);
     margin-bottom: 24px;
   }
@@ -438,7 +438,7 @@
   /* ── STATS STRIP ── */
   .stats-strip {
     background: var(--gold);
-    padding: 40px 60px;
+    padding: 36px 60px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
@@ -450,7 +450,7 @@
   }
   .stat-num {
     font-family: var(--serif);
-    font-size: 3.2rem;
+    font-size: 40px;
     font-weight: 300;
     color: var(--white);
     line-height: 1;
@@ -458,7 +458,7 @@
   }
   .stat-label {
     font-family: var(--sans);
-    font-size: 0.72rem;
+    font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -470,12 +470,12 @@
   .contact-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 56px;
     align-items: start;
     margin-top: 16px;
   }
   .contact-info p {
-    font-size: 0.95rem;
+    font-size: 15px;
     font-weight: 300;
     line-height: 1.85;
     color: var(--stone);
@@ -495,19 +495,19 @@
   }
   .contact-detail-label {
     font-family: var(--sans);
-    font-size: 0.65rem;
+    font-size: 11px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gold);
   }
   .contact-detail-value {
     font-family: var(--serif);
-    font-size: 1.1rem;
+    font-size: 18px;
     font-weight: 400;
     color: var(--ink);
   }
-  .contact-form { display: flex; flex-direction: column; gap: 8px; }
-  .form-group { display: flex; flex-direction: column; gap: 3px; }
+  .contact-form { display: flex; flex-direction: column; gap: 10px; }
+  .form-group { display: flex; flex-direction: column; gap: 4px; }
   .form-group label {
     font-family: var(--sans);
     font-size: 11px;
@@ -520,9 +520,9 @@
   .form-group select {
     background: var(--white);
     border: 1px solid var(--warm-mid);
-    padding: 12px 16px;
+    padding: 13px 16px;
     font-family: var(--sans);
-    font-size: 0.9rem;
+    font-size: 15px;
     font-weight: 300;
     color: var(--ink);
     outline: none;
@@ -533,13 +533,13 @@
   .form-group input:focus,
   .form-group textarea:focus,
   .form-group select:focus { border-color: var(--gold); }
-  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-group textarea { resize: vertical; min-height: 90px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
   /* ── FOOTER ── */
   footer {
     background: var(--ink);
-    padding: 48px 60px;
+    padding: 32px 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -554,7 +554,7 @@
   .footer-logo span { color: var(--gold); }
   footer p {
     font-family: var(--sans);
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 300;
     color: rgba(255,255,255,0.3);
     letter-spacing: 0.1em;
@@ -565,7 +565,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   .portfolio-card {
@@ -581,7 +581,7 @@
   }
   .portfolio-card-image {
     width: 100%;
-    height: 200px;
+    min-height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -599,11 +599,11 @@
     opacity: 0.9;
   }
   .portfolio-card-body {
-    padding: 28px 32px 32px;
+    padding: 24px 28px;
   }
   .portfolio-card-tag {
     font-family: var(--sans);
-    font-size: 0.65rem;
+    font-size: 11px;
     font-weight: 400;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -612,7 +612,7 @@
   }
   .portfolio-card-title {
     font-family: var(--serif);
-    font-size: 1.4rem;
+    font-size: 18px;
     font-weight: 400;
     color: var(--ink);
     margin-bottom: 10px;
@@ -620,7 +620,7 @@
   }
   .portfolio-card-desc {
     font-family: var(--sans);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 300;
     color: var(--stone);
     line-height: 1.75;
@@ -633,7 +633,7 @@
   }
   .portfolio-card-tech span {
     font-family: var(--sans);
-    font-size: 0.68rem;
+    font-size: 11px;
     font-weight: 400;
     color: var(--stone);
     background: var(--bone);
@@ -644,7 +644,7 @@
     grid-column: span 2;
   }
   .portfolio-featured .portfolio-card-image {
-    height: 260px;
+    min-height: 280px;
   }
   @media (max-width: 768px) {
     .portfolio-grid { grid-template-columns: 1fr; }
@@ -701,6 +701,7 @@
 
   /* ── RESPONSIVE — TABLET ── */
   @media (max-width: 768px) {
+    html { font-size: 16px; }
     nav { padding: 24px 32px; }
     nav.scrolled { padding: 16px 32px; }
     .mobile-menu-btn { display: flex; }
@@ -723,7 +724,7 @@
       font-size: 1rem;
       opacity: 0.8;
     }
-    section { padding: 60px 32px; }
+    section { padding: 40px 24px; }
     .hero { padding: 120px 32px 60px; grid-template-columns: 1fr; gap: 32px; }
     .services-grid { grid-template-columns: 1fr; gap: 2px; }
     .process-layout,
@@ -760,9 +761,10 @@
 
   /* ── RESPONSIVE — MOBILE ── */
   @media (max-width: 480px) {
+    html { font-size: 15px; }
     nav { padding: 20px 20px; }
     nav.scrolled { padding: 14px 20px; }
-    section { padding: 48px 20px; }
+    section { padding: 32px 16px; }
     .hero {
       padding: 120px 20px 60px;
       min-height: auto;
@@ -910,9 +912,9 @@
     </p>
   </div>
   <div class="hero-right">
-    <div class="hero-optin" id="hero-optin" style="opacity:0;animation:fadeUp 1s ease 0.6s forwards;background:var(--bone);border:1px solid var(--warm-mid);padding:32px 28px;">
-      <div style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--ink);margin-bottom:6px;line-height:1.3;">Get your free <em style="color:var(--gold);">AI audit.</em></div>
-      <p style="font-family:var(--sans);font-size:14px;font-weight:300;color:var(--stone);margin-bottom:20px;line-height:1.6;">We'll review your operations and show you exactly where AI saves you time and money.</p>
+    <div class="hero-optin" id="hero-optin" style="opacity:0;animation:fadeUp 1s ease 0.6s forwards;background:var(--bone);border:1px solid var(--warm-mid);padding:36px 32px;">
+      <div style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--ink);margin-bottom:6px;line-height:1.3;">Get your free <em style="color:var(--gold);">AI audit.</em></div>
+      <p style="font-family:var(--sans);font-size:15px;font-weight:300;color:var(--stone);margin-bottom:20px;line-height:1.6;">We'll review your operations and show you exactly where AI saves you time and money.</p>
       <div class="hero-optin-fields" style="grid-template-columns:1fr 1fr;">
         <input type="text" name="firstName" placeholder="First name" class="hero-input" required />
         <input type="text" name="lastName" placeholder="Last name" class="hero-input" required />
@@ -1046,7 +1048,7 @@
 
 <!-- PORTFOLIO -->
 <section id="work" style="background:var(--bone);padding:56px 60px;">
-  <div style="max-width:1100px;margin:0 auto;">
+  <div style="max-width:1200px;margin:0 auto;">
     <div class="section-label reveal">Portfolio</div>
     <h2 class="section-title reveal">Real systems. Real businesses.<br /><em>Real results.</em></h2>
     <div class="divider reveal"></div>
@@ -1184,7 +1186,7 @@
 <section id="about">
   <div class="about-layout">
     <div class="reveal" style="display:flex;align-items:center;justify-content:center;">
-      <div style="width:300px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+      <div style="width:320px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
         <img src="/ashley.png" alt="Ashley Hines — Founder, Lumen Ops" style="width:100%;height:auto;object-fit:cover;object-position:center top;display:block;" />
       </div>
     </div>
@@ -1209,7 +1211,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" style="background:var(--bone);padding:40px 60px;">
+<section id="contact" style="background:var(--bone);padding:48px 60px;">
   <div class="contact-layout">
     <div class="contact-info">
       <div class="section-label reveal">Get in Touch</div>
@@ -1279,7 +1281,7 @@
 </section>
 
 <!-- ELITE SECTION -->
-<section id="elite" style="background:var(--ink); padding:56px 60px; position:relative; overflow:hidden;">
+<section id="elite" style="background:var(--ink); padding:64px 60px; position:relative; overflow:hidden;">
   <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%220.04%22/%3E%3C/svg%3E');opacity:0.4;pointer-events:none;"></div>
   <div style="position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(ellipse, rgba(184,154,106,0.12) 0%, transparent 65%);pointer-events:none;"></div>
 
@@ -1297,67 +1299,67 @@
       We build you a custom AI org chart — a team of intelligent agents that run your back office on a schedule, autonomously.
     </p>
 
-    <p class="reveal" style="font-family:var(--sans);font-size:0.95rem;font-weight:300;line-height:1.85;color:rgba(232,226,216,0.55);max-width:640px;margin-bottom:72px;">
+    <p class="reveal" style="font-family:var(--sans);font-size:0.95rem;font-weight:300;line-height:1.85;color:rgba(232,226,216,0.55);max-width:640px;margin-bottom:48px;">
       Not a chatbot. Not a single automation. An entire AI workforce — purpose-built for your business, running 24/7, reporting results to your Slack every morning. You focus on revenue. Your agents handle everything else.
     </p>
 
     <!-- The AI Org Chart — what it looks like -->
-    <div class="reveal" style="margin-bottom:72px;">
+    <div class="reveal" style="margin-bottom:48px;">
       <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">Your AI Org Chart might include</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:32px 28px;">
-          <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs daily &middot; 7:00 AM</div>
-          <h3 style="font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--bone);margin-bottom:8px;">Lead Scoring Agent</h3>
-          <p style="font-family:var(--sans);font-size:0.78rem;font-weight:300;line-height:1.7;color:rgba(232,226,216,0.45);">Scores every new lead in your CRM on 12 distress signals. Prioritizes your call list. Flags hot opportunities in Slack before your team sits down.</p>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:28px 24px;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs daily &middot; 7:00 AM</div>
+          <h3 style="font-family:var(--serif);font-size:17px;font-weight:400;color:var(--bone);margin-bottom:8px;">Lead Scoring Agent</h3>
+          <p style="font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(232,226,216,0.45);">Scores every new lead in your CRM on 12 distress signals. Prioritizes your call list. Flags hot opportunities in Slack before your team sits down.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:32px 28px;">
-          <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs nightly &middot; 11:00 PM</div>
-          <h3 style="font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--bone);margin-bottom:8px;">Data Hygiene Agent</h3>
-          <p style="font-family:var(--sans);font-size:0.78rem;font-weight:300;line-height:1.7;color:rgba(232,226,216,0.45);">Deduplicates contacts, normalizes phone numbers, flags bad data, and merges records. Your CRM stays clean without anyone touching it.</p>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:28px 24px;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs nightly &middot; 11:00 PM</div>
+          <h3 style="font-family:var(--serif);font-size:17px;font-weight:400;color:var(--bone);margin-bottom:8px;">Data Hygiene Agent</h3>
+          <p style="font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(232,226,216,0.45);">Deduplicates contacts, normalizes phone numbers, flags bad data, and merges records. Your CRM stays clean without anyone touching it.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:32px 28px;">
-          <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs daily &middot; 7:00 AM</div>
-          <h3 style="font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--bone);margin-bottom:8px;">Marketing Analyst</h3>
-          <p style="font-family:var(--sans);font-size:0.78rem;font-weight:300;line-height:1.7;color:rgba(232,226,216,0.45);">Pulls ad spend, call volume, and lead data. Delivers a daily Slack briefing with cost-per-lead by channel and recommendations on what to cut or scale.</p>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:28px 24px;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs daily &middot; 7:00 AM</div>
+          <h3 style="font-family:var(--serif);font-size:17px;font-weight:400;color:var(--bone);margin-bottom:8px;">Marketing Analyst</h3>
+          <p style="font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(232,226,216,0.45);">Pulls ad spend, call volume, and lead data. Delivers a daily Slack briefing with cost-per-lead by channel and recommendations on what to cut or scale.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:32px 28px;">
-          <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs every 5 min</div>
-          <h3 style="font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--bone);margin-bottom:8px;">Lead Intake Agent</h3>
-          <p style="font-family:var(--sans);font-size:0.78rem;font-weight:300;line-height:1.7;color:rgba(232,226,216,0.45);">Watches for new leads from Facebook, web forms, and call tracking. Instantly syncs to CRM with source attribution, tags, and workflow triggers.</p>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:28px 24px;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs every 5 min</div>
+          <h3 style="font-family:var(--serif);font-size:17px;font-weight:400;color:var(--bone);margin-bottom:8px;">Lead Intake Agent</h3>
+          <p style="font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(232,226,216,0.45);">Watches for new leads from Facebook, web forms, and call tracking. Instantly syncs to CRM with source attribution, tags, and workflow triggers.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:32px 28px;">
-          <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs weekly &middot; Monday 8 AM</div>
-          <h3 style="font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--bone);margin-bottom:8px;">Pipeline Reporter</h3>
-          <p style="font-family:var(--sans);font-size:0.78rem;font-weight:300;line-height:1.7;color:rgba(232,226,216,0.45);">Generates a weekly pipeline summary — deals by stage, stale leads, follow-up gaps, revenue forecast. Delivered to Slack and email so Monday meetings start with data.</p>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:28px 24px;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs weekly &middot; Monday 8 AM</div>
+          <h3 style="font-family:var(--serif);font-size:17px;font-weight:400;color:var(--bone);margin-bottom:8px;">Pipeline Reporter</h3>
+          <p style="font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(232,226,216,0.45);">Generates a weekly pipeline summary — deals by stage, stale leads, follow-up gaps, revenue forecast. Delivered to Slack and email so Monday meetings start with data.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:32px 28px;">
-          <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs daily &middot; 6:00 AM</div>
-          <h3 style="font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--bone);margin-bottom:8px;">Prospecting Agent</h3>
-          <p style="font-family:var(--sans);font-size:0.78rem;font-weight:300;line-height:1.7;color:rgba(232,226,216,0.45);">Searches court records, checks property sales status, monitors MLS changes, and surfaces high-priority prospects before your competitors find them.</p>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:28px 24px;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Runs daily &middot; 6:00 AM</div>
+          <h3 style="font-family:var(--serif);font-size:17px;font-weight:400;color:var(--bone);margin-bottom:8px;">Prospecting Agent</h3>
+          <p style="font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(232,226,216,0.45);">Searches court records, checks property sales status, monitors MLS changes, and surfaces high-priority prospects before your competitors find them.</p>
         </div>
       </div>
     </div>
 
     <!-- What Elite includes -->
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:72px;">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:48px;">
       <div>
         <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">What you get</div>
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="display:flex;align-items:flex-start;gap:12px;">
             <span style="color:var(--gold);font-size:0.85rem;margin-top:2px;">&#10038;</span>
-            <div><div style="font-family:var(--sans);font-size:0.85rem;color:var(--bone);font-weight:400;margin-bottom:2px;">Custom AI agent team</div><div style="font-family:var(--sans);font-size:0.75rem;color:rgba(232,226,216,0.4);line-height:1.6;">Agents designed around your specific operations, data sources, and workflows</div></div>
+            <div><div style="font-family:var(--sans);font-size:15px;color:var(--bone);font-weight:400;margin-bottom:2px;">Custom AI agent team</div><div style="font-family:var(--sans);font-size:13px;color:rgba(232,226,216,0.4);line-height:1.6;">Agents designed around your specific operations, data sources, and workflows</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;">
             <span style="color:var(--gold);font-size:0.85rem;margin-top:2px;">&#10038;</span>
-            <div><div style="font-family:var(--sans);font-size:0.85rem;color:var(--bone);font-weight:400;margin-bottom:2px;">Fully managed — we run everything</div><div style="font-family:var(--sans);font-size:0.75rem;color:rgba(232,226,216,0.4);line-height:1.6;">Monitoring, maintenance, updates, and optimization. Zero effort from your team.</div></div>
+            <div><div style="font-family:var(--sans);font-size:15px;color:var(--bone);font-weight:400;margin-bottom:2px;">Fully managed — we run everything</div><div style="font-family:var(--sans);font-size:13px;color:rgba(232,226,216,0.4);line-height:1.6;">Monitoring, maintenance, updates, and optimization. Zero effort from your team.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;">
             <span style="color:var(--gold);font-size:0.85rem;margin-top:2px;">&#10038;</span>
-            <div><div style="font-family:var(--sans);font-size:0.85rem;color:var(--bone);font-weight:400;margin-bottom:2px;">Dedicated build capacity</div><div style="font-family:var(--sans);font-size:0.75rem;color:rgba(232,226,216,0.4);line-height:1.6;">New agents, new integrations, new automations every month as your business evolves</div></div>
+            <div><div style="font-family:var(--sans);font-size:15px;color:var(--bone);font-weight:400;margin-bottom:2px;">Dedicated build capacity</div><div style="font-family:var(--sans);font-size:13px;color:rgba(232,226,216,0.4);line-height:1.6;">New agents, new integrations, new automations every month as your business evolves</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;">
             <span style="color:var(--gold);font-size:0.85rem;margin-top:2px;">&#10038;</span>
-            <div><div style="font-family:var(--sans);font-size:0.85rem;color:var(--bone);font-weight:400;margin-bottom:2px;">Monthly strategy sessions</div><div style="font-family:var(--sans);font-size:0.75rem;color:rgba(232,226,216,0.4);line-height:1.6;">We identify the highest-leverage AI opportunities in your operation and build them</div></div>
+            <div><div style="font-family:var(--sans);font-size:15px;color:var(--bone);font-weight:400;margin-bottom:2px;">Monthly strategy sessions</div><div style="font-family:var(--sans);font-size:13px;color:rgba(232,226,216,0.4);line-height:1.6;">We identify the highest-leverage AI opportunities in your operation and build them</div></div>
           </div>
         </div>
       </div>
@@ -1366,19 +1368,19 @@
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="display:flex;align-items:flex-start;gap:12px;">
             <span style="font-family:var(--sans);font-size:0.72rem;font-weight:600;color:var(--gold);width:20px;">01</span>
-            <div><div style="font-family:var(--sans);font-size:0.85rem;color:var(--bone);font-weight:400;margin-bottom:2px;">We audit your operation</div><div style="font-family:var(--sans);font-size:0.75rem;color:rgba(232,226,216,0.4);line-height:1.6;">Map every workflow, bottleneck, and data source. Identify where AI agents create the most leverage.</div></div>
+            <div><div style="font-family:var(--sans);font-size:15px;color:var(--bone);font-weight:400;margin-bottom:2px;">We audit your operation</div><div style="font-family:var(--sans);font-size:13px;color:rgba(232,226,216,0.4);line-height:1.6;">Map every workflow, bottleneck, and data source. Identify where AI agents create the most leverage.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;">
             <span style="font-family:var(--sans);font-size:0.72rem;font-weight:600;color:var(--gold);width:20px;">02</span>
-            <div><div style="font-family:var(--sans);font-size:0.85rem;color:var(--bone);font-weight:400;margin-bottom:2px;">We design your AI org chart</div><div style="font-family:var(--sans);font-size:0.75rem;color:rgba(232,226,216,0.4);line-height:1.6;">Each agent gets a role, a schedule, inputs, outputs, and a reporting channel. You approve the plan.</div></div>
+            <div><div style="font-family:var(--sans);font-size:15px;color:var(--bone);font-weight:400;margin-bottom:2px;">We design your AI org chart</div><div style="font-family:var(--sans);font-size:13px;color:rgba(232,226,216,0.4);line-height:1.6;">Each agent gets a role, a schedule, inputs, outputs, and a reporting channel. You approve the plan.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;">
             <span style="font-family:var(--sans);font-size:0.72rem;font-weight:600;color:var(--gold);width:20px;">03</span>
-            <div><div style="font-family:var(--sans);font-size:0.85rem;color:var(--bone);font-weight:400;margin-bottom:2px;">We build and deploy your agents</div><div style="font-family:var(--sans);font-size:0.75rem;color:rgba(232,226,216,0.4);line-height:1.6;">Agents go live on their schedules. You start getting Slack reports, clean data, and scored leads immediately.</div></div>
+            <div><div style="font-family:var(--sans);font-size:15px;color:var(--bone);font-weight:400;margin-bottom:2px;">We build and deploy your agents</div><div style="font-family:var(--sans);font-size:13px;color:rgba(232,226,216,0.4);line-height:1.6;">Agents go live on their schedules. You start getting Slack reports, clean data, and scored leads immediately.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;">
             <span style="font-family:var(--sans);font-size:0.72rem;font-weight:600;color:var(--gold);width:20px;">04</span>
-            <div><div style="font-family:var(--sans);font-size:0.85rem;color:var(--bone);font-weight:400;margin-bottom:2px;">We manage and expand continuously</div><div style="font-family:var(--sans);font-size:0.75rem;color:rgba(232,226,216,0.4);line-height:1.6;">We monitor performance, fix issues, and add new agents every month. Your AI team grows with your business.</div></div>
+            <div><div style="font-family:var(--sans);font-size:15px;color:var(--bone);font-weight:400;margin-bottom:2px;">We manage and expand continuously</div><div style="font-family:var(--sans);font-size:13px;color:rgba(232,226,216,0.4);line-height:1.6;">We monitor performance, fix issues, and add new agents every month. Your AI team grows with your business.</div></div>
           </div>
         </div>
       </div>
